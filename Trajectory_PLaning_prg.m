@@ -27,7 +27,7 @@ PF = [str2double(Rep(1, 1)) str2double(Rep(2, 1))]';
 
 
 to = 0;                    %instant initial
-tf = 0.1;                  %instant final
+tf = 1;                  %instant final
 
 a1 = 1;      % longueur bras 1
 a2 = 1;      % longueur bras 2
@@ -59,12 +59,12 @@ if  Xf > a1
 end
 
 [q1i] = Scara_GEOINV(Xi, Yi);
-[q2i] = Scara_GEOINV(Xi, Yi);
+[q2i] = Scara_GEOINV(Xf, Yf);
 
 [q1f] = Scara_GEOINV(Xf, Yf);
-[q2f] = Scara_GEOINV(Xf, Yf);
+[q2f] = Scara_GEOINV(Xi, Yi);
 
-%spline d'ordre 5 pour trajectoire initiale et finale
+% spline d'ordre 5 pour trajectoire initiale et finale
 % à modifier lorqu'on travaille pour le scara pour chaque articulation
 A = [1, to, ((to)^2), ((to)^3), ((to)^4), ((to)^5);     % pos init
 0, 1, 2 * to, 3 * ((to)^2), 4 * ((to)^3), 5 * ((to)^4); % vit init
@@ -102,7 +102,7 @@ for t = to:.01:tf-.01
 	X = [X x];
 	Y = [Y y];
 	Q1 = [Q1, q1];
-	Q2 = [Q2, q1];
+	Q2 = [Q2, q2];
 	V1 = [V1 v1];
 	AC1 = [AC1 ac1];
 	T = [T t];
