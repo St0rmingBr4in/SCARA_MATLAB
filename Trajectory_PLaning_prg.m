@@ -10,7 +10,7 @@ clear
 prompt1 = {'Position X initiale', 'Position Y initiale'};
 dlg_title1 = 'Fenêtre position initiale';
 num_lines = 1;
-default = {'-0.5736', '0.8192'};%valeur par défaut
+default = {'-0.5736', '0.8192'}; %valeur par défaut
 
 Rep = inputdlg(prompt1, dlg_title1, num_lines, default);
 PI = [str2double(Rep(1, 1)) str2double(Rep(2, 1))]';
@@ -26,8 +26,8 @@ Rep = inputdlg(prompt2, dlg_title2, num_lines, default);
 PF = [str2double(Rep(1, 1)) str2double(Rep(2, 1))]';
 
 
-to = 0;                    %instant initial
-tf = 1;                  %instant final
+to = 0;      %instant initial
+tf = 1;      %instant final
 
 a1 = 1;      % longueur bras 1
 a2 = 1;      % longueur bras 2
@@ -59,10 +59,10 @@ if  Xf > a1
 end
 
 [q1i] = Scara_GEOINV(Xi, Yi);
-[q2i] = Scara_GEOINV(Xf, Yf);
+[q2i] = Scara_GEOINV(Xi, Yi);
 
 [q1f] = Scara_GEOINV(Xf, Yf);
-[q2f] = Scara_GEOINV(Xi, Yi);
+[q2f] = Scara_GEOINV(Xf, Yf);
 
 % spline d'ordre 5 pour trajectoire initiale et finale
 % à modifier lorqu'on travaille pour le scara pour chaque articulation
