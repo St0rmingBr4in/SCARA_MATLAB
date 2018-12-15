@@ -10,5 +10,5 @@ X_2 = a2 * cosd(T2 + T1);
 Y_2 = a2 * sind(T2 + T1);
 plot3([X_1 (X_2 + X_1)], [Y_1  (Y_1 + Y_2)], [d1 d1], 'green', 'linewidth', 7)
 
-axis([-(2 * a1) (2 * a1) -(2 * a1) (2 * a1) 0 d1])
+axis([-(a1 + a2) (a1 + a2) -(a1 + a2) (a1 + a2) 0 d1])
 hold off

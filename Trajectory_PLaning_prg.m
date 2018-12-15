@@ -10,7 +10,7 @@ clear
 prompt1 = {'Position X initiale', 'Position Y initiale'};
 dlg_title1 = 'Fenêtre position initiale';
 num_lines = 1;
-default = {'-0.5736', '0.8192'}; %valeur par défaut
+default = {'0', '1'}; %valeur par défaut
 
 Rep = inputdlg(prompt1, dlg_title1, num_lines, default);
 PI = [str2double(Rep(1, 1)) str2double(Rep(2, 1))]';
@@ -20,7 +20,7 @@ PI = [str2double(Rep(1, 1)) str2double(Rep(2, 1))]';
 prompt2 = {'Position X Finale', 'Position Y Finale'};
 dlg_title2 = 'Fenêtre position Finale';
 num_lines = 1;
-default = {'0', '1'};     %valeur par défaut
+default = {'2', '0'};     %valeur par défaut
 
 Rep = inputdlg(prompt2, dlg_title2, num_lines, default);
 PF = [str2double(Rep(1, 1)) str2double(Rep(2, 1))]';
@@ -29,7 +29,7 @@ PF = [str2double(Rep(1, 1)) str2double(Rep(2, 1))]';
 to = 0;      %instant initial
 tf = 1;      %instant final
 
-a1 = 1;      % longueur bras 1
+a1 = 2;      % longueur bras 1
 a2 = 1;      % longueur bras 2
 d1 = 1;      % hauteur base souhaitée (pour faire du 3D)
 
@@ -142,7 +142,7 @@ for i = 1:1:length(Q1)
 	hold on
 	plot3(X, Y, Z, 'blue', 'linewidth', 3)
 	hold on
-	Dessiner_SCARA(Q1(i), Q2(i), a1, d1, a2)
+	Dessiner_SCARA(Q1(i), Q2(i), a1, a2, d1)
 
 	pause(.01)
 	hold off
